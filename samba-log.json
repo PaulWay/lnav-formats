@@ -1,0 +1,31 @@
+{
+	"smb_log" : {
+		"title"			: "Samba log format",
+		"description"	: "Log format used by Samba",
+		"url"			: "http://samba.org",
+		"regex" : {
+			"debug_line"	: {
+				"pattern" : "^\\[(?<timestamp>\\d{4}/\\d{2}/\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d+),\\s+(?<debug_level>\\d+)\\]\\s(?<file>\\S+\\.c):(?<line>\\d+)\\((<function>\\w+)\\)$"
+			},
+			"info_line"		: {
+				"pattern" : "^\\s\\s(?<body>.*)$"
+			}
+		},
+		"value" : {
+			"file"	 		: { "kind" : "string", "identifier" : true },
+			"line"	 		: { "kind" : "integer" },
+			"function"		: { "kind" : "string", "identifier" : true },
+			"debug_level"	: { "kind" : "integer" },
+			"body"			: { "kind" : "string" }
+		},
+		"sample" : [
+			{
+				"line" 	: "[2015/06/14 04:12:00.513900,  1] ../source3/smbd/service.c:891(make_connection_snum)"
+			},
+			{
+				"line"	: "  axisoes (ipv4:10.246.3.60:4759) connect to service interface initially as user nobody (uid=99, gid=99) (pid 29307)"
+			}
+		]
+	}
+}
+
