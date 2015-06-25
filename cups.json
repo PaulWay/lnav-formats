@@ -3,11 +3,11 @@
 		"title"			: "CUPS log format",
 		"description"	: "Log format used by the Common Unix Printing System",
 		"regex" : {
-			"system"	: {
-				"pattern" : "^(?<level>[IEW]) (?<timestamp>\\d{2}/\\w{3}/\\d{4}:\\d{2}:\\d{2}:\\d{2} [+-]\\d{2}) (?<section>\w+): (?<body>.*)$"
+			"section"	: {
+				"pattern" : "^(?<level>[IEW]) \\[(?<timestamp>\\d{2}/\\w{3}/\\d{4}:\\d{2}:\\d{2}:\\d{2} [+-]\\d{4})\\] (?<section>\\w+): (?<body>.*)$"
 			},
 			"default"	: {
-				"pattern" : "^(?<level>[IEW]) (?<timestamp>\\d{2}/\\w{3}/\\d{4}:\\d{2}:\\d{2}:\\d{2} [+-]\\d{2}) (?<body>.*)$"
+				"pattern" : "^(?<level>[IEW]) \\[(?<timestamp>\\d{2}/\\w{3}/\\d{4}:\\d{2}:\\d{2}:\\d{2} [+-]\\d{4})\\] (?<body>.*)$"
 			}
 		},
 		"level" : {
@@ -24,7 +24,7 @@
 				"line" 	: "I [04/Nov/2010:17:37:40 -0400] Allowing up to 100 client connections per host."
 			},
 			{
-				"line" 	: "I [04/Nov/2010:17:37:40 -0400] LoadPPDs: Wrote "/etc/cups/ppds.dat", 14 PPDs..."
+				"line" 	: "I [04/Nov/2010:17:37:40 -0400] LoadPPDs: Wrote \"/etc/cups/ppds.dat\", 14 PPDs..."
 			},
 			{
 				"line" 	: "E [04/Nov/2010:17:37:40 -0400] StartListening: Unable to find IP address for server name \"localhost.localdomain\" - Host name lookup failure"
