@@ -16,7 +16,7 @@
 		},
 		"value" : {
 			"alert_level"	: { "kind" : "string" },
-			"module" 		: { "kind" : "string" },
+			"module" 		: { "kind" : "string", "identifier" : true },
 			"message"		: { "kind" : "string" }
 		},
 		"sample" : [
@@ -31,6 +31,18 @@
 			},
 			{
 				"line"  : "[ INFO 2015-05-20 12:22:19 main] /usr/share/ruby/vendor_ruby/puppet/util/errors.rb:104:in `fail'"
+			},
+			{
+				"line" 	: "[ INFO 2015-07-06 14:50:39 main] Puppet has finished, bye!"
+			},
+			{
+				"line" 	: "[ WARN 2015-07-06 14:50:33 main]  /Stage[main]/Foreman::Service/Service[foreman]: Skipping because of failed dependencies"
+			},
+			{
+				"line" 	: "[DEBUG 2015-07-06 14:50:33 main]  Executing '/usr/share/katello-installer/modules/service_wait/bin/service-wait foreman status'"
+			},
+			{
+				"line" 	: "[DEBUG 2015-07-06 14:50:39 main] Cleaning /tmp/default_values.yaml"
 			}
 		]
 	}
