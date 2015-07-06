@@ -1,0 +1,40 @@
+{
+	"openldap" : {
+		"title"			: "OpenLDAP log format",
+		"description"	: "Log format used by the Directory Services daemon for OpenLDAP",
+		"regex" : {
+			"conn_op"		: {
+				"pattern" : "^\\[(?<timestamp>\\d{2}/\\w{3}/\\d{4}:\\d{2}:\\d{2}:\\d{2} [+-]\\d{4})\\] conn=(?<conn>\\d+) op=(?<op>\\d+) (?<opname>\\w+) (?<body>.*)$"
+			},
+			"y_conn"		: {
+				"pattern" : "^\\[(?<timestamp>\\d{2}/\\w{3}/\\d{4}:\\d{2}:\\d{2}:\\d{2} [+-]\\d{4})\\] conn=(?<conn>\\d+) (?<body>.*)$"
+			},
+			"z_default"	: {
+				"pattern" : "^\\[(?<timestamp>\\d{2}/\\w{3}/\\d{4}:\\d{2}:\\d{2}:\\d{2} [+-]\\d{4})\\] (?<body>.*)$"
+			}
+		},
+		"value" : {
+			"conn"		: { "kind" : "integer", "identifier" : true },
+			"op"		: { "kind" : "integer" },
+			"opname"	: { "kind" : "string", "identifier" : true },
+			"body"		: { "kind" : "string" }
+		},
+		"sample" : [
+			{
+				"line" 	: "[18/Jun/2015:12:59:59 +1000] conn=48645 fd=133 slot=133 connection from 192.168.231.146 to 192.168.7.140"
+			},
+			{
+				"line" 	: "[18/Jun/2015:13:00:00 +1000] conn=48645 TLS1.2 128-bit AES"
+			},
+			{
+				"line" 	: "[18/Jun/2015:13:00:00 +1000] conn=48645 op=1 BIND dn=\"cn=Replication Manager example.intranet-pki-tomcat,ou=csusers,cn=config\" method=128 version=3"
+			},
+			{
+				"line" 	: "[18/Jun/2015:13:00:00 +1000] conn=48645 op=1 RESULT err=0 tag=97 nentries=0 etime=0 dn=\"cn=replication manager example.intranet-pki-tomcat,ou=csusers,cn=config\""
+			},
+			{
+				"line" 	: "[13/Jun/2015:15:04:21 +1000] slapd_ldap_sasl_interactive_bind - Error: could not perform interactive bind for id [] mech [GSSAPI]: LDAP error -2 (Local error) (SASL(-1): generic failure: GSSAPI Error: Unspecified GSS failure.  Minor code may provide more information (Ticket expired)) errno 2 (No such file or directory)"
+			}
+		]
+	}
+}
