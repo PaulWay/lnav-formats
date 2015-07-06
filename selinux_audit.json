@@ -1,0 +1,41 @@
+{
+	"selinux_audit" : {
+		"title"			: "SELinux audit log format",
+		"description"	: "Log format for SELinux audit messages",
+		"regex" : {
+			"denial"	: {
+				"pattern" : "^type=(?<type>AVC) msg=audit\\((?<timestamp>\\d+\\.\\d+):(?<line_no>\\d+)\\): avc:\\s+denied\\s+\\{ (?<action>\\w+(?:\\s\\w+)*) \\} for  pid=(?<pid>\\d+) comm=\"(?<comm>\\w+)\" name=\"(?<name>.*?)\" dev=(?<device>\\d+:\\d+) ino=(?<inode>\\d+) scontext=(?<src_user>\\w+):(?<src_role>\\w+):(?<src_type>\\w+):(?<src_mlc>\\S+) tcontext=(?<tgt_user>\\w+):(?<tgt_role>\\w+):(?<tgt_type>\\w+):(?<tgt_mlc>\\S+) tclass=(?<tgt_class>\\w+)$"
+			},
+			"usual"	: {
+				"pattern" : "^type=(?<type>\\w+) msg=audit\\((?<timestamp>\\d+\\.\\d+):(?<line_no>\\d+)\\): (?<body>\\S.*)$"
+			}
+		},
+		"timestamp-format" : [ "%s.%i" ],
+		"value" : {
+			"type"		: { "kind" : "string", "identifier" : true },
+			"line_no"	: { "kind" : "integer" },
+			"body"		: { "kind" : "string" }
+		},
+		"sample" : [
+			{
+				"line" 	: "type=AVC msg=audit(1435824080.278:1215): avc:  denied  { search } for  pid=10417 comm=\"postmaster\" name=\"\" dev=0:16 ino=1015358 scontext=unconfined_u:system_r:postgresql_t:s0 tcontext=system_u:object_r:nfs_t:s0 tclass=dir"
+			},
+			{
+				"line" 	: "type=AVC msg=audit(1435822831.002:1170): avc:  denied  { read write } for  pid=5130 comm=\"cobblerd\" name=\"grub.cfg\" dev=dm-8 ino=394514 scontext=unconfined_u:system_r:cobblerd_t:s0 tcontext=system_u:object_r:tftpdir_rw_t:s0 tclass=file"
+			},
+			{
+				"line" 	: "type=SYSCALL msg=audit(1435824080.278:1215): arch=c000003e syscall=80 success=no exit=-13 a0=7fff9cd87d50 a1=73 a2=2f a3=0 items=0 ppid=1 pid=10417 auid=6449 uid=6381 gid=6222 euid=6381 suid=6381 fsuid=6381 egid=6222 sgid=6222 fsgid=6222 tty=(none) ses=118 comm=\"postmaster\" exe=\"/usr/bin/postgres\" subj=unconfined_u:system_r:postgresql_t:s0 key=(null)"
+			},
+			{
+				"line" 	: "type=CRYPTO_KEY_USER msg=audit(1435824253.416:1242): user pid=11586 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:sshd_t:s0-s0:c0.c1023 msg='op=destroy kind=server fp=bd:99:66:29:7c:cc:c0:f1:98:fe:4f:bc:38:18:7c:f0 direction=? spid=11586 suid=0  exe=\"/usr/sbin/sshd\" hostname=? addr=10.127.10.114 terminal=? res=success'"
+			},
+			{
+				"line" 	: "type=CRYPTO_SESSION msg=audit(1435824253.426:1243): user pid=11583 uid=0 auid=4294967295 ses=4294967295 subj=system_u:system_r:sshd_t:s0-s0:c0.c1023 msg='op=start direction=from-client cipher=aes256-ctr ksize=256 spid=11586 suid=74 rport=65337 laddr=10.223.94.89 lport=22  exe=\"/usr/sbin/sshd\" hostname=? addr=10.127.10.114 terminal=? res=success'"
+			},
+			{
+				"line" 	: "type=LOGIN msg=audit(1435824254.962:1250): pid=11583 uid=0 subj=system_u:system_r:sshd_t:s0-s0:c0.c1023 old auid=4294967295 new auid=6449 old ses=4294967295 new ses=125"
+			}
+		]
+	}
+}
+
