@@ -1,0 +1,32 @@
+{
+	"dracut_log" : {
+		"title"			: "Dracut log format",
+		"description"	: "Log format used by Dracut init maker",
+		"regex" : {
+			"default"	: {
+				"pattern" : "^(?<timestamp>\\w{3} \\w{3} (?:\\d{2}| \\d) \\d{2}:\\d{2}:\\d{2} \\w+ \\d{4}) (?<alert_level>\\w+): (?<body>.*)$"
+			}
+		},
+		"value" : {
+			"alert_level"	: { "kind" : "string" },
+			"body"			: { "kind" : "string" }
+		},
+		"sample" : [
+			{
+				"line" 	: "Fri Apr 17 15:13:15 AEST 2015 Info: Executing /sbin/dracut -f /boot/initramfs-2.6.32-504.12.2.el6.x86_64.img 2.6.32-504.12.2.el6.x86_64"
+			},
+			{
+				"line" 	: "Fri Apr 17 15:13:15 AEST 2015 Info: Installing /lib64/libc-2.12.so"
+			},
+			{
+				"line" 	: "Fri Jun 26 14:39:53 AEST 2015 Info: Stripping '/tmp/initramfs.wIHD1f/initqueue-timeout/99rootfallback.sh'"
+			},
+			{
+				"line" 	: "Fri Jun 26 14:40:12 AEST 2015 Info: Wrote /boot/initramfs-2.6.32-504.23.4.el6.x86_64.img"
+			},
+			{
+				"line" 	: "Fri Jun 26 14:40:12 AEST 2015 Info: -rw-------. 1 root root 19404550 Jun 26 14:40 /boot/initramfs-2.6.32-504.23.4.el6.x86_64.img"
+			}
+		]
+	}
+}
