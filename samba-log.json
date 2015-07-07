@@ -5,13 +5,11 @@
 		"url"			: "http://samba.org",
 		"regex" : {
 			"debug_line"	: {
-				"pattern" : "^\\[(?<timestamp>\\d{4}/\\d{2}/\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d+),\\s+(?<debug_level>\\d+)\\]\\s(?<file>\\S+\\.c):(?<line>\\d+)\\((<function>\\w+)\\)$"
-			},
-			"info_line"		: {
-				"pattern" : "^\\s\\s(?<body>.*)$"
+				"pattern" : "^\\[(?<timestamp>\\d{4}/\\d{2}/\\d{2} \\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?),\\s+(?<debug_level>\\d+)(?:, pid=(?<pid>\\d+))?(?:, effective\\((?<euid>\\d+), (?<egid>\\d+)\\))?(?:, real\\((?<ruid>\\d+), (?<rgid>\\d+)\\))?(?:, class=(?<class>\\w+))?\\]\\s(?<file>\\S+\\.c):(?<line>\\d+)\\((?<function>\\w+)\\)$"
 			}
 		},
 		"value" : {
+			"pid"			: { "kind" : "integer", "identifier" : true },
 			"file"	 		: { "kind" : "string", "identifier" : true },
 			"line"	 		: { "kind" : "integer" },
 			"function"		: { "kind" : "string", "identifier" : true },
@@ -23,7 +21,13 @@
 				"line" 	: "[2015/06/14 04:12:00.513900,  1] ../source3/smbd/service.c:891(make_connection_snum)"
 			},
 			{
-				"line"	: "  axisoes (ipv4:10.246.3.60:4759) connect to service interface initially as user nobody (uid=99, gid=99) (pid 29307)"
+				"line"	: "[2015/07/02 15:55:26.512502,  5, pid=58201, effective(0, 0), real(0, 0)] ../source3/lib/smbldap.c:1249(smbldap_search_ext)"
+			},
+			{
+				"line"	: "[2015/06/18 12:43:09, 10, pid=47821, effective(0, 0), real(0, 0), class=registry] ../source3/registry/reg_backend_db.c:1836(regdb_unpack_values)"
+			},
+			{
+				"line"	: "[2015/04/07 13:21:59,  3] nmbd/nmbd_incomingrequests.c:456(process_name_query_request)"
 			}
 		]
 	}
