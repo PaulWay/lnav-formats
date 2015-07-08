@@ -1,0 +1,40 @@
+{
+	"strace_log" : {
+		"title"			: "Strace log format",
+		"description"	: "Log format used by strace",
+		"url"			: "http://en.wikipedia.org/wiki/Strace",
+		"regex" : {
+			"signal"	: {
+				"pattern" : "^(?:(?<process_id>\\d+) )?(?<timestamp>\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{6})?) --- (?<signal>SIG\\w+) \\((?<signame>\\w+)\\) @ \\d+ \\(\\d+\\) ---$"
+			},
+			"incomplete"	: {
+				"pattern" : "^(?:(?<process_id>\\d+) )?(?<timestamp>\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{6})?) (?<syscall>\\w+)\\((?<body>.*)$"
+			},
+			"std"	: {
+				"pattern" : "^(?:(?<process_id>\\d+) )?(?<timestamp>\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{6})?) (?<syscall>\\w+)\\((?<body>.*)\\)\\s+=\\s+(?<rc>[-\\w]+)(?: (?<errno>\\w+) \\([^\\)]+\\))?(?: <(?<duration>\\d+\\.\\d+)>)?$"
+			}
+		},
+		"value" : {
+			"signal"	: { "kind" : "string", "identifier" : true },
+			"signame"	: { "kind" : "string", "identifier" : true },
+			"body"		: { "kind" : "string" }
+		},
+		"sample" : [
+			{
+				"line" 	: "12231 15:42:50 --- SIGINT (Interrupt) @ 0 (0) ---"
+			},
+			{
+				"line"	: "2731  14:48:34.987869 select(9, [4 5 6 7 8], NULL, NULL, {0, 762910}) = 0 (Timeout) <0.763747>"
+			},
+			{
+				"line" 	: "12231 15:42:50 rt_sigaction(SIGINT, {0x338b4be0e0, [], SA_RESTORER, 0x338ac0eca0}, {0x338b4be0e0, [], SA_RESTORER, 0x338ac0eca0}, 8) = 0"
+			},
+			{
+				"line" 	: "12231 15:42:50 rt_sigreturn(0x2)        = -1 EINTR (Interrupted system call)"
+			},
+			{
+				"line" 	: "12231 15:42:50 poll([{fd=5, events=POLLIN|POLLERR}], 1, -1"
+			}
+		]
+	}
+}
