@@ -11,7 +11,7 @@
 				"pattern" : "^(?:(?<process_id>\\d+)\\s+)?(?<timestamp>\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{6})?) (?<syscall>\\w+)\\((?<body>.*)$"
 			},
 			"resumed"	: {
-				"pattern" : "^(?:(?<process_id>\\d+)\\s+)?(?<timestamp>\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{6})?) <... (?<syscall>\\w+) resumed> \\)\\s+=\\s+(?<rc>[-\\w]+)(?: (?<errno>\\w+) \\([^\\)]+\\))?(?: <(?<duration>\\d+\\.\\d+)>)?$"
+				"pattern" : "^(?:(?<process_id>\\d+)\\s+)?(?<timestamp>\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{6})?) <... (?<syscall>\\w+) resumed> (?<body>.*)\\)\\s+=\\s+(?<rc>[-\\w]+)(?: (?<errno>\\w+) \\([^\\)]+\\))?(?: <(?<duration>\\d+\\.\\d+)>)?$"
 			},
 			"std"	: {
 				"pattern" : "^(?:(?<process_id>\\d+)\\s+)?(?<timestamp>\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{6})?) (?<syscall>\\w+)\\((?<body>.*)\\)\\s+=\\s+(?<rc>[-\\w]+)(?: (?<errno>\\w+) \\([^\\)]+\\))?(?: <(?<duration>\\d+\\.\\d+)>)?$"
@@ -31,6 +31,9 @@
 			},
 			{
 				"line"	: "2132  10:36:20.613059 <... vfork resumed> ) = 2133 <0.000366>"
+			},
+			{
+				"line"	: "2132  10:36:21.988159 <... getsockname resumed> {sa_family=AF_NETLINK, pid=2132, groups=00000000}, [12]) = 0 <0.000019>"
 			},
 			{
 				"line"	: "2731  14:48:34.987869 select(9, [4 5 6 7 8], NULL, NULL, {0, 762910}) = 0 (Timeout) <0.763747>"
