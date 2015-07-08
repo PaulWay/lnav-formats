@@ -5,13 +5,16 @@
 		"url"			: "http://en.wikipedia.org/wiki/Strace",
 		"regex" : {
 			"signal"	: {
-				"pattern" : "^(?:(?<process_id>\\d+) )?(?<timestamp>\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{6})?) --- (?<signal>SIG\\w+) \\((?<signame>\\w+)\\) @ \\d+ \\(\\d+\\) ---$"
+				"pattern" : "^(?:(?<process_id>\\d+)\\s+)?(?<timestamp>\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{6})?) --- (?<signal>SIG\\w+) \\((?<signame>\\w+)\\) @ \\d+ \\(\\d+\\) ---$"
 			},
-			"incomplete"	: {
-				"pattern" : "^(?:(?<process_id>\\d+) )?(?<timestamp>\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{6})?) (?<syscall>\\w+)\\((?<body>.*)$"
+			"incomplete": {
+				"pattern" : "^(?:(?<process_id>\\d+)\\s+)?(?<timestamp>\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{6})?) (?<syscall>\\w+)\\((?<body>.*)$"
+			},
+			"resumed"	: {
+				"pattern" : "^(?:(?<process_id>\\d+)\\s+)?(?<timestamp>\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{6})?) <... (?<syscall>\\w+) resumed> \\)\\s+=\\s+(?<rc>[-\\w]+)(?: (?<errno>\\w+) \\([^\\)]+\\))?(?: <(?<duration>\\d+\\.\\d+)>)?$"
 			},
 			"std"	: {
-				"pattern" : "^(?:(?<process_id>\\d+) )?(?<timestamp>\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{6})?) (?<syscall>\\w+)\\((?<body>.*)\\)\\s+=\\s+(?<rc>[-\\w]+)(?: (?<errno>\\w+) \\([^\\)]+\\))?(?: <(?<duration>\\d+\\.\\d+)>)?$"
+				"pattern" : "^(?:(?<process_id>\\d+)\\s+)?(?<timestamp>\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{6})?) (?<syscall>\\w+)\\((?<body>.*)\\)\\s+=\\s+(?<rc>[-\\w]+)(?: (?<errno>\\w+) \\([^\\)]+\\))?(?: <(?<duration>\\d+\\.\\d+)>)?$"
 			}
 		},
 		"value" : {
@@ -22,6 +25,12 @@
 		"sample" : [
 			{
 				"line" 	: "12231 15:42:50 --- SIGINT (Interrupt) @ 0 (0) ---"
+			},
+			{
+				"line"	: "2132  10:36:20.612682 vfork( <unfinished ...>"
+			},
+			{
+				"line"	: "2132  10:36:20.613059 <... vfork resumed> ) = 2133 <0.000366>"
 			},
 			{
 				"line"	: "2731  14:48:34.987869 select(9, [4 5 6 7 8], NULL, NULL, {0, 762910}) = 0 (Timeout) <0.763747>"
