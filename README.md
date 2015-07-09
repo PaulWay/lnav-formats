@@ -17,6 +17,11 @@ stdin and turns them into sample lines in a new format.  This can, for
 instance, be used by marking several significant lines in lnav and issuing the
 command:
 
-`:pipe-to perl path/to/make_format.pl`
+`:pipe-to perl path/to/make_format.pl -name example -output example_log.json`
 
-Replace all uses of the word 'NEW' with your chosen format name.
+Using the `-name` or `-n` option sets the name in the format.  This is lazy,
+so you'll need to edit it to suit yourself.  If this option is not specified
+the format name is 'NEW' throughout.
+
+Using the `-output` or `-o` option sets the destination for the new format.
+If this is not specified the result will be written to standard output.

@@ -2,6 +2,16 @@
 
 use warnings;
 use strict;
+use autodie;
+
+use Getopt::Long;
+
+my $format_name = 'NEW';
+my $output_file = '-';
+GetOptions(
+	'name|n=s'		=> \$format_name,
+	'output|o=s'	=> \$output_file,
+);
 
 my $header = '{
 	"NEW_log" : {
@@ -29,6 +39,11 @@ my $footer = '
 }
 ';
 
+# Replace format name if necessary
+if ($format_name ne 'NEW') {
+	$header =~ s{NEW}{$format_name}go;
+};
+
 # Read lines in, strip, and escape double quotes and backslashes.
 my @lines;
 while (<>) {
@@ -38,7 +53,17 @@ while (<>) {
 	push @lines, $_;
 }
 
+# Open output, or stdout if requested
+my $ofh;
+if ($output_file eq '-') {
+	$ofh = *STDOUT;
+} else {
+	open $ofh, '>', $output_file;
+}
+
 # Print the template;
-print $header;
-print join(",\n", map { $sample_prefix . $_ . $sample_suffix } @lines);
-print $footer;
+print $ofh $header;
+print $ofh join(",\n", map { $sample_prefix . $_ . $sample_suffix } @lines);
+print $ofh $footer;
+
+close $ofh;
