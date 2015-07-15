@@ -1,0 +1,38 @@
+{
+	"squid_log" : {
+		"title"			: "squid log format",
+		"description"	: "Log format used by the Squid HTTP cache",
+		"url"			: "http://wiki.squid-cache.org/Features/LogFormat",
+		"regex" : {
+			"access_get_request"	: {
+				"pattern" : "^(?<timestamp>\\d+(?:\\.\\d{3})?)\\s+(?<duration>\\d+)\\s+(?<client>(?:\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})) (?<req_type>\\w+)/(?<response_code>\\d+) (?<resp_size>\\d+) GET (?<body>https?://\\S+) (?<user>\\w+|-) (?<method>\\w+)(?:/(?<source>\\S+)) (?<mime_type>\\w+/\\w+|-)$"
+			},
+			"default"	: {
+				"pattern" : "^(?<timestamp>\\d+(?:\\.\\d{3})?)\\s+(?<body>.*)$"
+			}
+		},
+		"timestamp-format" : [ "%s.%i" ],
+		"value" : {
+			"duration"	: { "kind" : "integer" },
+			"client"	: { "kind" : "string", "identifier" : true },
+			"req_type"	: { "kind" : "string", "identifier" : true },
+			"response_code"	: { "kind" : "integer", "identifier" : true },
+			"resp_size"	: { "kind" : "integer" },
+			"body"		: { "kind" : "string" },
+			"method"	: { "kind" : "string", "identifier" : true },
+			"source"	: { "kind" : "string", "identifier" : true },
+			"mime_type"	: { "kind" : "string", "identifier" : true }
+		},
+		"sample" : [
+			{
+				"line" 	: "1436673100.317    488 127.0.0.1 TCP_REFRESH_MODIFIED/200 1783 GET http://example.org/example.xml - DIRECT/10.20.130.12 text/xml"
+			},
+			{
+				"line" 	: "1436691398.468   1616 127.0.0.1 TCP_SWAPFAIL_MISS/200 2512822 GET http://example.org/example.gz - DIRECT/10.20.130.12 application/x-gzip"
+			},
+			{
+				"line" 	: "1436799758.045    955 127.0.0.1 TCP_MISS/200 70113 GET http://example.org/example.bin - DIRECT/10.20.130.12 application/octet-stream"
+			}
+		]
+	}
+}
