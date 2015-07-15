@@ -8,7 +8,7 @@
 				"pattern" : "^(?<timestamp>\\d+(?:\\.\\d{3})?)\\s+(?<duration>\\d+)\\s+(?<client>(?:\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})) (?<req_type>\\w+)/(?<response_code>\\d+) (?<resp_size>\\d+) GET (?<body>https?://\\S+) (?<user>\\w+|-) (?<method>\\w+)(?:/(?<source>\\S+)) (?<mime_type>\\w+/\\w+|-)$"
 			},
 			"default"	: {
-				"pattern" : "^(?<timestamp>\\d+(?:\\.\\d{3})?)\\s+(?<body>.*)$"
+				"pattern" : "^(?<timestamp>\\d{4}/\\d{2}/\\d{2} (?:\\d |\\d\\d):\\d{2}:\\d{2})\\|\\s+(?<body>.*)$"
 			}
 		},
 		"timestamp-format" : [ "%s.%i" ],
@@ -32,6 +32,9 @@
 			},
 			{
 				"line" 	: "1436799758.045    955 127.0.0.1 TCP_MISS/200 70113 GET http://example.org/example.bin - DIRECT/10.20.130.12 application/octet-stream"
+			},
+			{
+				"line"	: "2015/06/19 16:44:04| Creating Swap Directories"
 			}
 		]
 	}
