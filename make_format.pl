@@ -29,6 +29,8 @@ my $header = '{
 		},
 		"sample" : [
 ';
+# yep, we still need to double the slashes inside single quotes.
+$header =~ s{\\}{\\\\}g;
 my $sample_prefix = '			{
 				"line" 	: "';
 my $sample_suffix = '"
