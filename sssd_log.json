@@ -5,10 +5,10 @@
 		"url"			: "http://fedorahosted.org/sssd",
 		"regex" : {
 			"core"		: {
-				"pattern" : "^\\((?<timestamp>\\w{3} \\w{3} ( \\d|\\d{2}) \\d{2}:\\d{2}:\\d{2} \\d{4})\\) \\[sssd\\] \\[(?<function>\\w+)\\] \\((?<debug_level>0x[0-9a-fA-F]{4})\\): (?<body>.*)$"
+				"pattern" : "^\\((?<timestamp>\\w{3} \\w{3} ( \\d|\\d{2}) \\d{2}:\\d{2}:\\d{2} \\d{4})\\) \\[sssd\\] \\[(?<function>\\w+)\\] \\((?<debug_level>0x[0-9a-fA-F]{4}|\\d)\\): (?<body>.*)$"
 			},
 			"module"	: {
-				"pattern" : "^\\((?<timestamp>\\w{3} \\w{3} ( \\d|\\d{2}) \\d{2}:\\d{2}:\\d{2} \\d{4})\\) \\[sssd(?<module>\\[.*?\\])\\] \\[(?<function>\\w+)\\] \\((?<debug_level>0x[0-9a-fA-F]{4})\\): (?<body>.*)$"
+				"pattern" : "^\\((?<timestamp>\\w{3} \\w{3} ( \\d|\\d{2}) \\d{2}:\\d{2}:\\d{2} \\d{4})\\) \\[sssd(?<module>\\[.*?\\])\\] \\[(?<function>\\w+)\\] \\((?<debug_level>0x[0-9a-fA-F]{4}|\\d)\\): (?<body>.*)$"
 			}
 		},
 		"value" : {
@@ -23,6 +23,9 @@
 			},
 			{
 				"line"	: "(Tue Mar 31 05:58:38 2015) [sssd] [start_service] (0x0100): Queueing service LDAP for startup"
+			},
+			{
+				"line"	: "(Sun Sep 13 04:02:08 2015) [sssd[nss]] [client_recv] (5): Client disconnected!"
 			}
 		]
 	}
