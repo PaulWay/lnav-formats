@@ -7,8 +7,14 @@ and warnings, and more.
 
 This repository is for the log file format descriptions I've written so far.
 
-You can install these using `lnav -i formatfile.json` or by putting them
-in your `~/.lnav/formats/installed` directory.
+You can install these by simply checking this directory out in your
+'~/.lnav/formats' directory.
+
+# lnav version
+
+Some of these formats use features that are only available in lnav version
+0.8.0 or above.  If you get warnings, try renaming the offending files to
+.json-unused to see if this fixes things.
 
 # Easy creation of formats
 
