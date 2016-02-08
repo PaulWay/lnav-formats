@@ -1,0 +1,35 @@
+{
+	"anaconda_syslog" : {
+		"title"			: "Anaconda Syslog log format",
+		"description"	: "Log format used by Anaconda when issuing syslog lines.",
+		"regex" : {
+			"default"	: {
+				"pattern" : "^(?<timestamp>\\d{2}:\\d{2}:\\d{2}(?:,\\d+)?) (?<alert_level>ERR|WARNING|INFO|NOTICE|DEBUG) (?<subsystem>\\w+):\\s*(?<body>.*)$"
+			}
+		},
+		"value" : {
+			"alert_level"	: { "kind" : "string" },
+			"subsystem"		: { "kind" : "string", "identifier" : true },
+			"body"			: { "kind" : "string" }
+		},
+		"level" : {
+			"error"	: "ERR",
+			"warning": "WARNING",
+			"debug"	: "DEBUG|INFO|NOTICE"
+		},
+		"sample" : [
+			{
+				"line" 	: "13:27:11,205 WARNING kernel:raid6: int64x1   1156 MB/s"
+			},
+			{
+				"line" 	: "13:51:28,645 INFO kernel:ADDRCONF(NETDEV_UP): eth3: link is not ready"
+			},
+			{
+				"line"	: "13:29:43,392 DEBUG kernel:SELinux: initialized (dev sdb2, type ext4), uses xattr"
+			},
+			{
+				"line" 	: "13:51:28,647 NOTICE NetworkManager:    ifcfg-rh: updating /etc/sysconfig/network-scripts/ifcfg-eth2"
+			}
+		]
+	}
+}
