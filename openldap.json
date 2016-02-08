@@ -14,8 +14,8 @@
 			}
 		},
 		"value" : {
-			"conn"		: { "kind" : "integer", "identifier" : true },
-			"op"		: { "kind" : "integer" },
+			"conn"		: { "kind" : "string", "identifier" : true },
+			"op"		: { "kind" : "string", "identifier" : true },
 			"opname"	: { "kind" : "string", "identifier" : true },
 			"body"		: { "kind" : "string" }
 		},
