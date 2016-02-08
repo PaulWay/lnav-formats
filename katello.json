@@ -10,9 +10,9 @@
 		},
 		"level-field" : "alert_level",
 		"level" : {
-			"error"	: "ERROR",
-			"warning": "WARN",
-			"debug"	: "DEBUG"
+			"error"		: "ERROR",
+			"warning"	: "WARN",
+			"debug"		: "DEBUG"
 		},
 		"value" : {
 			"alert_level"	: { "kind" : "string" },
@@ -51,9 +51,6 @@
 		"description"	: "Apache logs written by katello",
 		"url"			: "http://theforeman.org/",
 		"regex" : {
-			"log_1"		: {
-				"pattern" : "^\\[(?<timestamp>\\w{3} \\w{3} \\d{2} \\d{2}:\\d{2}:\\d{2} \\d{4})\\]\\s\\[(?<level>\\w+)\\]\\s+(?<message>\\S.*)$"
-			},
 			"log_2"		: {
 				"pattern" : "^\\[\\s(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}(?:\\.\\d+))\\s(?<pid>\\d+)/(?<ptr>[0-9a-f]{12})\\s(?<file>[A-Za-z/_.]+):(?<line>\\d+)\\s*\\]:\\s+(?<message>\\S.*)$"
 			}
@@ -66,9 +63,6 @@
 			"message"	: { "kind" : "string" }
 		},
 		"sample" : [
-			{
-				"line" : "[Thu Nov 12 15:50:11 2015] [error] Exception TypeError: \"'NoneType' object is not callable\" in <bound method Pool.__del__ of <pymongo.pool.Pool instance at 0x7fc04c4d2128>> ignored"
-			},
 			{
 				"line" : "[ 2015-11-12 15:50:11.9838 7015/7fd2b73b3720 agents/Watchdog/Main.cpp:450 ]: Options: { 'analytics_log_user' => 'nobody', 'default_group' => 'nobody', 'default_python' => 'python', 'default_ruby' => 'ruby', 'default_user' => 'nobody', 'log_level' => '0', 'max_instances_per_app' => '0', 'max_pool_size' => '6', 'passenger_root' => '/usr/lib/ruby/gems/1.8/gems/passenger-4.0.18/lib/phusion_passenger/locations.ini', 'pool_idle_time' => '300', 'temp_dir' => '/var/run/rubygem-passenger', 'union_station_gateway_address' => 'gateway.unionstationapp.com', 'union_station_gateway_port' => '443', 'user_switching' => 'true', 'web_server_pid' => '7014', 'web_server_type' => 'apache', 'web_server_worker_gid' => '48', 'web_server_worker_uid' => '48' }"
 			},
@@ -87,10 +81,10 @@
 			}
 		},
 		"level" : {
-			"error"	: "E",
-			"warning": "W",
-			"information": "I",
-			"debug"	: "D"
+			"error"		: "E",
+			"warning"	: "W",
+			"info"		: "I",
+			"debug"		: "D"
 		},
 		"value" : {
 			"level"		: { "kind" : "string" }
