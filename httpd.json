@@ -1,0 +1,61 @@
+{
+	"https_access_log" : {
+		"title"			: "access log format for HTTPS",
+		"description"	: "Log format used by Apache HTTPD for HTTPS connections",
+		"url"			: "http://httpd.apache.org",
+		"regex" : {
+			"default"	: {
+				"pattern" : "^\\[(?<timestamp>\\d{2}/\\w{3}/\\d{4}:\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?: [+-]\\d{4}))?\\] (?<client>[\\w\\d:.-]+) (?<wrapper>[\\w/.-]+) (?<crypto>[\\w-]+) \"(?<method>\\w+) (?<path>\\S+) (?<transport>\\S+)\" (?<resp_size>\\d+|-)$"
+			}
+		},
+		"value" : {
+			"client"	: { "kind" : "string", "identifier" : true },
+			"wrapper"	: { "kind" : "string", "identifier" : true },
+			"crypto"	: { "kind" : "string", "identifier" : true },
+			"method"	: { "kind" : "string", "identifier" : true },
+			"path"		: { "kind" : "string", "identifier" : true },
+			"transport"	: { "kind" : "string", "identifier" : true },
+			"resp_size"	: { "kind" : "integer", "identifier" : true },
+			"body"	: { "kind" : "string" }
+		},
+		"sample" : [
+			{
+				"line" 	: "[07/Aug/2015:07:56:43 -0400] 172.25.34.7 TLSv1.2 ECDHE-RSA-AES128-GCM-SHA256 \"GET /rhn/systems/Overview.do HTTP/1.1\" 73851"
+			},
+			{
+				"line"	: "[02/Feb/2016:16:41:14 +0000] 10.24.137.73 TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 \"GET /XMLRPC/GET-REQ/prod-rhel-x86_64-server-6-rhscl-1/repodata/repomd.xml HTTP/1.1\" -"
+			}
+		]
+	},
+	"error_log" : {
+		"title"			: "error log format for HTTPS",
+		"description"	: "Log format used by Apache HTTPD for HTTPS connections",
+		"url"			: "http://httpd.apache.org",
+		"regex" : {
+			"default"	: {
+				"pattern" : "^\\[(?<timestamp>\\w{3} \\w{3} \\d{2} \\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)? \\d{4})\\] \\[(?<level>\\w+)\\] (?:(?<function>[\\w/.-]+): )?(?:\\[client (?<client>[\\w.:-]+)\\] )?(?:\\((?<errnum>\\d+)\\))?(?<body>.*)$"
+			}
+		},
+		"timestamp-format" : [ 
+			"%a %b %d %H:%M:%S %Y"
+		],
+		"value" : {
+			"level"		: { "kind" : "string", "identifier" : true },
+			"function"	: { "kind" : "string", "identifier" : true },
+			"error"		: { "kind" : "string", "identifier" : true },
+			"client"	: { "kind" : "string", "identifier" : true },
+			"body"	: { "kind" : "string" }
+		},
+		"sample" : [
+			{
+				"line" 	: "[Tue Feb 02 16:13:00 2016] [error] ajp_read_header: ajp_ilink_receive failed"
+			},
+			{
+				"line" 	: "[Tue Feb 02 16:13:00 2016] [error] (70007)The timeout specified has expired: proxy: read response failed from 127.0.0.1:8009 (localhost)"
+			},
+			{
+				"line" 	: "[Tue Feb 02 16:42:29 2016] [warn] [client 10.20.30.100] incomplete redirection target of '/rhn/Login.do' for URI '/index.html' modified to 'http://example.com/'"
+			}
+		]
+	}
+}
