@@ -1,0 +1,44 @@
+{
+	"catalina_log" : {
+		"title"			: "catalina log format",
+		"description"	: "Log format used by catalina",
+		"url"			: "http://catalina",
+		"regex" : {
+			"regular_line"	: {
+				"pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}(?:\\,\\d+)?) \\[(?<process>[\\w-]+)\\] (?<alert_level>\\w+)\\s+(?<class>[\\w._]+) - (?<body>.*)$"
+			},
+			"dump_line"		: {
+				"pattern" : "JVMDUMP(?<dump_id>\\d+\\w+) Processing dump event \"(?<event>\\w+)\", detail \"(?<exception>[\\w./]+)\" at (?<timestamp>\\d{4}/\\d{2}/\\d{2} \\d{2}:\\d{2}:\\d{2}(?:\\,\\d+)?) - please wait.$"
+			},
+			"pause_line"	: {
+				"pattern" : "^(?<timestamp>\\w{3} [\\d ]\\d, \\d{4} \\d{1,2}:\\d{2}:\\d{2} (AM|PM)) (?<class>[\\w._]+) pause$"
+			}
+		},
+		"value" : {
+			"dump_id"	: { "kind" : "string", "identifier" : true },
+			"class"		: { "kind" : "string", "identifier" : true },
+			"event"		: { "kind" : "string", "identifier" : true },
+			"exception"	: { "kind" : "string", "identifier" : true },
+			"body"		: { "kind" : "string" }
+		},
+		"timestamp-format" : [ 
+			"%b %d, %Y %I:%M:%S %p",
+			"%Y-%m-%d %H:%M:%S",
+			"%Y/%m/%d %H:%M:%S"
+		],
+		"sample" : [
+			{
+				"line" 	: "2015-09-21 13:30:26,906 [TP-Processor37] WARN  com.redhat.rhn.common.hibernate.EmptyVarcharInterceptor - Object com.redhat.rhn.domain.user.legacy.PersonalInfo is setting empty string title"
+			},
+			{
+				"line" 	: "JVMDUMP039I Processing dump event \"systhrow\", detail \"java/lang/OutOfMemoryError\" at 2015/09/21 15:03:05 - please wait."
+			},
+			{
+				"line" 	: "2015-09-21 15:03:08,614 [TP-Processor91] WARN  org.hibernate.engine.loading.CollectionLoadContext - On CollectionLoadContext#cleanup, localLoadingCollectionKeys contained [1] entries"
+			},
+			{
+				"line" 	: "Sep 21, 2015 03:40:22 PM org.apache.coyote.http11.Http11Protocol pause"
+			}
+		]
+	}
+}
