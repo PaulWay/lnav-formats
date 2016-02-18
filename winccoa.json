@@ -5,7 +5,7 @@
         "url"           : "http://www.etm.at/index_e.asp?id=2&m0id=6",
         "regex" : {
                 "basic" : {
-                    "pattern" : "^(?<manager>WCC.*?)\\s+\\((?<man_num>\\d+\\)), (?<timestamp>\\d{4}.\\d{2}.\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d{3}),\\s+(?<mod>\\w+),\\s+(?<level>\\w+),\\s+(?<body>.*?)$"
+                    "pattern" : "^(?<manager>WCC.*?)\\s*\\((?<man_num>\\d+\\)), (?<timestamp>\\d{4}.\\d{2}.\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d{3}),\\s*(?<mod>\\w+),\\s*(?<level>\\w+),\\s*(?<body>.*?)$"
                 }
         },
         "timestamp-format" : ["%Y.%m.%d %H:%M:%S.%L"],
