@@ -1,0 +1,52 @@
+{
+	"exim_log" : {
+		"title"			: "Exim log format",
+		"description"	: "Log format used by Exim, the internet mailer",
+		"url"			: "http://exim.org",
+		"regex" : {
+			"smtp_line"	: {
+				"pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)? (?:[+-]\\d{4})) SMTP connection from (?<host>\\w[\\w_.-]+\\w) \\[(?<host_ip>(?:\\d[\\d.]+\\d|[0-9a-f:]+[0-9a-f]))\\] I=\\[(?<rcv_ip>(?:\\d[\\d.]+\\d|[0-9a-f:]+[0-9a-f]))\\]:(?<port>\\d{1,5}) (?<body>.*)$"
+			},
+			"send_line" : {
+				"pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)? (?:[+-]\\d{4})) (?<msg_id>[A-Za-z0-9-]+) (?:Completed|(?<dir><=|=>|->|>>|\\*>|\\*\\*|==) (?<body>.*))$"
+			},
+			"recv_line" : {
+				"pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)? (?:[+-]\\d{4})) H=(?:(?<host>\\w[\\w_.-]+\\w)|(?<inval_host>\\(\\d[\\d.:]+\\d\\))) \\[(?<host_ip>(?:\\d[\\d.]+\\d|[0-9a-f:]+[0-9a-f]))\\] I=\\[(?<rcv_ip>(?:\\d[\\d.]+\\d|[0-9a-f:]+[0-9a-f]))\\]:(?<port>\\d{1,5}) (?<body>.*)$"
+			}
+		},
+		"value" : {
+			"host"		: { "kind" : "string", "identifier" : true },
+			"inval_host": { "kind" : "string", "identifier" : true },
+			"host_ip"	: { "kind" : "string", "identifier" : true },
+			"rcv_ip"	: { "kind" : "string", "identifier" : true },
+			"msg_id"	: { "kind" : "string", "identifier" : true },
+			"body"		: { "kind" : "string" }
+		},
+		"sample" : [
+			{
+				"line" 	: "2016-03-14 00:01:04 +0000 1afFwW-0004Wp-4f <= root@w2-64.wizint.net H=out1-w2.wizmail.org [2a00:1940:107::2:2:1000] I=[2a00:1940:107::2:4:4000]:25 P=esmtps X=TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256 CV=yes DN=\"/C=GB/ST=Berkshire/L=Burnham/O=Wizards Internet Limited/CN=backup-mx-001.wizmail.org/emailAddress=postmaster@wizmail.org\" S=1900 id=E1afFwV-0001zA-46@w2-64.wizint.net for sysadmin@wizint.net"
+			},
+			{
+				"line" 	: "2016-03-14 00:01:04 +0000 SMTP connection from out1-w2.wizmail.org [2a00:1940:107::2:2:1000] I=[2a00:1940:107::2:4:4000]:25 closed by QUIT "
+			},
+			{
+				"line" 	: "2016-03-14 00:01:04 +0000 1afFwW-0004Wp-4f => /mail/tidymail.co.uk/sysadmin/Maildir/ (sysadmin@wizint.net) <sysadmin@wizint.net> R=forw_n_local T=address_directory"
+			},
+			{
+				"line" 	: "2016-03-14 00:01:04 +0000 1afFwW-0004Wp-4f Completed"
+			},
+			{
+				"line" 	: "2016-03-14 00:01:41 +0000 H=server.mecmesin.com [78.157.201.234] I=[217.146.107.46]:25 X=TLSv1.2:ECDHE-RSA-AES256-GCM-SHA384:256 CV=no F=<> rejected RCPT <priggishnesses@cust.biz>: Unrecognised user"
+			},
+			{
+				"line" 	: "2016-03-14 00:01:41 +0000 H=server.mecmesin.com [78.157.201.234] I=[217.146.107.46]:25 incomplete transaction (QUIT) from <>"
+			},
+			{
+				"line" 	: "2016-03-14 00:02:30 +0000 1afFxu-0004hA-0h <= person@cust.net H=([192.168.0.17]) [127.0.0.1] I=[217.146.107.54]:587 P=esmtpsa X=TLSv1.2:ECDHE-RSA-AES128-GCM-SHA256:128 CV=no A=myplain:wendyg@auth.scootmail.com S=19410 id=56E5FF91.50106@pelicancrossing.net for thomas.rid@gmail.com"
+			},
+			{
+				"line" 	: "2016-03-14 00:10:08 +0000 H=(217.146.107.46) [80.91.125.24] I=[217.146.107.46]:25 rejected EHLO or HELO 217.146.107.46: No, we don't think your name really is 217.146.107.46. IP addresses should be enclosed in square brackets."
+			}
+		]
+	}
+}
