@@ -4,13 +4,13 @@
 		"description"	: "Log format used by the Directory Services daemon for OpenLDAP",
 		"regex" : {
 			"conn_op"		: {
-				"pattern" : "^\\[(?<timestamp>\\d{2}/\\w{3}/\\d{4}:\\d{2}:\\d{2}:\\d{2} [+-]\\d{4})\\] conn=(?<conn>\\d+) op=(?<op>\\d+) (?<opname>\\w+) (?<body>.*)$"
+				"pattern" : "^\\[(?<timestamp>\\d{2}/\\w{3}/\\d{4}:\\d{2}:\\d{2}:\\d{2}(?:\\d+)? [+-]\\d{4})\\] conn=(?<conn>\\d+) op=(?<op>\\d+) (?<opname>\\w+) (?<body>.*)$"
 			},
 			"y_conn"		: {
-				"pattern" : "^\\[(?<timestamp>\\d{2}/\\w{3}/\\d{4}:\\d{2}:\\d{2}:\\d{2} [+-]\\d{4})\\] conn=(?<conn>\\d+) (?<body>.*)$"
+				"pattern" : "^\\[(?<timestamp>\\d{2}/\\w{3}/\\d{4}:\\d{2}:\\d{2}:\\d{2}(?:\\d+)? [+-]\\d{4})\\] conn=(?<conn>\\d+) (?<body>.*)$"
 			},
 			"z_default"	: {
-				"pattern" : "^\\[(?<timestamp>\\d{2}/\\w{3}/\\d{4}:\\d{2}:\\d{2}:\\d{2} [+-]\\d{4})\\] (?<body>.*)$"
+				"pattern" : "^\\[(?<timestamp>\\d{2}/\\w{3}/\\d{4}:\\d{2}:\\d{2}:\\d{2}(?:\\d+)? [+-]\\d{4})\\] (?<body>.*)$"
 			}
 		},
 		"value" : {
