@@ -1,0 +1,33 @@
+{
+	"mythbackend_log" : {
+		"title"			: "MythTV Backend log format",
+		"description"	: "Log format used by the MythTV backend process",
+		"url"			: "http://mythtv.org",
+		"regex" : {
+			"line"	: {
+				"pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?) (?<level>[CEINW]) \\[(?<num1>\\d+)/(?<num2>\\d+)\\] (?<context>\\w+) (?<filename>\\w+\\.cpp):(?<line>\\d+) \\((?<function>\\w+)\\) - (?<body>.*)$"
+			}
+		},
+		"level" : {
+            "config"    : "C",
+			"debug"		: "D",
+			"error"		: "E",
+            "information" : "I",
+            "notice"    : "N",            
+			"warning"	: "W"
+		},
+		"value" : {
+			"num1"  	: { "kind" : "integer" },
+			"num2"  	: { "kind" : "integer" },
+			"context"	: { "kind" : "string", "identifier" : true },
+			"filename" 	: { "kind" : "string", "identifier" : true },
+			"line"  	: { "kind" : "integer", "identifier" : true },
+			"function" 	: { "kind" : "string", "identifier" : true }
+		},
+		"sample" : [
+			{
+				"line" 	: "2016-03-19 17:40:00.449788 C [3053/3053] thread_unknown mythcommandlineparser.cpp:2595 (ConfigureLogging) - mythbackend version: fixes/0.27"
+			}
+		]
+	}
+}
