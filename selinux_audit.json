@@ -10,7 +10,7 @@
 				"pattern" : "^type=(?<type>\\w+) msg=audit\\((?<timestamp>\\d+\\.\\d+):(?<event_no>\\d+)\\): (?<body>\\S.*)$"
 			}
 		},
-		"timestamp-format" : [ "%s.%i" ],
+		"timestamp-format" : [ "%s" ],
 		"value" : {
 			"type"		: { "kind" : "string", "identifier" : true },
 			"event_no"	: { "kind" : "integer", "identifier" : true },
