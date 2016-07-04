@@ -1,24 +1,25 @@
 {
-	"java_log" : {
+	"log4j" : {
 		"title"			: "Java log format",
 		"description"	: "Log format used by log4j and output by most java programs",
 		"url"			: "",
 		"regex" : {
 			"twostamps"	: {
-				"pattern" : "^(?<alert_level>\\w+)\\s+\\|\\s+jvm (?<jvm_no>\\d+)\\s+\\|\\s(?<timestamp>\\d{4}/\\d{2}/\\d{2} \\d{2}:\\d{2}:\\d{2})\\s+\\| (?<timestamp_f>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}(?:,\\d{3})?) \\[(?<function>\\w+-\\d+)\\]\\s+(?<debug_level>\\w+)\\s+(?<class>[\\w.]+)\\s+-\\s+(?<body>\\S.*)"
+				"pattern" : "^(?<alert_level>\\w+)\\s+\\|\\s+(?<source>(?:jvm \\d+)|wrapper[p]?)\\s+\\|\\s(?<timestamp>\\d{4}/\\d{2}/\\d{2} \\d{2}:\\d{2}:\\d{2})\\s+\\| (?<timestamp_f>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}(?:,\\d{3})?) \\[(?<function>\\w+-\\d+)\\]\\s+(?<debug_level>\\w+)\\s+(?<class>[\\w.]+)\\s+-\\s+(?<body>\\S.*)"
 			},
 			"onestamp"	: {
-				"pattern" : "^(?<alert_level>\\w+)\\s+\\|\\s+jvm (?<jvm_no>\\d+)\\s+\\|\\s(?<timestamp>\\d{4}/\\d{2}/\\d{2} \\d{2}:\\d{2}:\\d{2}(?:,\\d{3})?)\\s+\\|\\s+(?<body>\\S.*)$"
-			},
-			"wrapper"	: {
-				"pattern" : "^(?<alert_level>\\w+)\\s+\\|\\s+wrapper\\s+\\|\\s(?<timestamp>\\d{4}/\\d{2}/\\d{2} \\d{2}:\\d{2}:\\d{2}(?:,\\d{3})?)\\s+\\|\\s+(?<body>\\S.*)$"
+				"pattern" : "^(?<alert_level>\\w+)\\s+\\|\\s+(?<source>(?:jvm \\d+)|wrapper[p]?)\\s+\\|\\s(?<timestamp>\\d{4}/\\d{2}/\\d{2} \\d{2}:\\d{2}:\\d{2}(?:,\\d{3})?)\\s+\\|\\s+(?<body>\\S.*)$"
 			},
 			"tasko"	: {
 				"pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2},\\d{3}) \\[(?<function>\\w+-\\d+)\\]\\s+(?<alert_level>\\w+)\\s+(?<class>[\\w.]+)\\s+-\\s+(?<body>\\S.*)$"
+			},
+			"catalina" : {
+				"pattern" : "^(?<timestamp>\\w{3} \\d{1,2}, \\d{4} \\d{2}:\\d{2}:\\d{2}(?:,\\d{3})? (?:AM|PM)) (?<source>(?:\\w+\\.)+\\w+) (?<function>\\w+)$"
 			}
 		},
 		"level-field" : "alert_level",
 		"level" : {
+			"info"	: "STATUS",
 			"error" : "ERROR",
 			"warning" : "WARN",
 			"debug" : "DEBUG",
@@ -26,10 +27,10 @@
 		},
 		"value" : {
 			"function" 		: { "kind" : "string", "identifier" : true },
-			"alert_level"	: { "kind" : "string" },
-			"jvm_no"		: { "kind" : "integer" },
-			"debug_level"	: { "kind" : "string" },
-			"class"			: { "kind" : "string" },
+			"alert_level"	: { "kind" : "string", "identifier" : true },
+			"source"		: { "kind" : "string", "identifier" : true },
+			"debug_level"	: { "kind" : "string", "identifier" : true },
+			"class"			: { "kind" : "string", "identifier" : true },
 			"body"			: { "kind" : "string" }
 		},
 		"sample" : [
@@ -47,6 +48,12 @@
 			},
 			{
 				"line"	: "INFO   | jvm 1    | 2015/06/18 12:02:42 | Wrapper (Version 3.2.3) http://wrapper.tanukisoftware.org"
+			},
+			{
+				"line"	: "DEBUG  | wrapperp | 2016/05/26 12:19:44 | send a packet PING : ping"
+			},
+			{
+				"line"	: "Jun 14, 2016 11:16:27 AM org.apache.catalina.loader.WebappClassLoader clearThreadLocalMap"
 			}
 		]
 	}
