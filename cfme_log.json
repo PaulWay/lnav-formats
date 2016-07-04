@@ -8,6 +8,13 @@
 				"pattern" : "^\\[(?<field1>[^]]{4})\\] (?<level>\\w), \\[(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{6}) #(?<pid>\\d+):(?<client_id>[0-9a-f]{6,7})\\]  (?<level2>\\w+) (?<field2>..) : (?:Q-task_id\\(\\[(?<q_task_id>\\w+)\\]\\) )?MIQ\\((?<m_task_id>[\\w:.]+)(?:#(?<m_action>\\w+))?\\) (?:Message id: \\[(?<message_id>\\d+)\\], )?(?<body>.*?)$"
 			}
 		},
+		"level" : {
+			"info"	: "STATUS",
+			"error" : "ERROR",
+			"warning" : "WARN",
+			"debug" : "DEBUG",
+			"info" : "INFO"
+		},
 		"value" : {
 			"pid"		: { "kind" : "string", "identifier" : true },
 			"client_id" : { "kind" : "string", "identifier" : true },
