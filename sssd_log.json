@@ -12,9 +12,9 @@
 			}
 		},
 		"value" : {
-			"module" 		: { "kind" : "string" },
-			"function"		: { "kind" : "string" },
-			"debug_level"	: { "kind" : "string" },
+			"module" 		: { "kind" : "string", "identifier" : true },
+			"function"		: { "kind" : "string", "identifier" : true },
+			"debug_level"	: { "kind" : "string", "identifier" : true },
 			"body"			: { "kind" : "string" }
 		},
 		"sample" : [
