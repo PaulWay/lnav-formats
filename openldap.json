@@ -3,6 +3,9 @@
 		"title"			: "OpenLDAP log format",
 		"description"	: "Log format used by the Directory Services daemon for OpenLDAP",
 		"regex" : {
+			"connection"	: {
+				"pattern" : "^\\[(?<timestamp>\\d{2}/\\w{3}/\\d{4}:\\d{2}:\\d{2}:\\d{2}(?:\\d+)? [+-]\\d{4})\\] conn=(?<conn>\\d+) fd=(?<fd>\\d+) slot=(?<slot>\\d+) (?<conn_type>(?:\\w+ )?connection) from (?<source>\\S+) to (?<dest>\\S+)$"
+			},
 			"conn_op"		: {
 				"pattern" : "^\\[(?<timestamp>\\d{2}/\\w{3}/\\d{4}:\\d{2}:\\d{2}:\\d{2}(?:\\d+)? [+-]\\d{4})\\] conn=(?<conn>\\d+) op=(?<op>\\d+) (?<opname>\\w+) (?<body>.*)$"
 			},
@@ -10,12 +13,19 @@
 				"pattern" : "^\\[(?<timestamp>\\d{2}/\\w{3}/\\d{4}:\\d{2}:\\d{2}:\\d{2}(?:\\d+)? [+-]\\d{4})\\] conn=(?<conn>\\d+) (?<body>.*)$"
 			},
 			"z_default"	: {
-				"pattern" : "^\\[(?<timestamp>\\d{2}/\\w{3}/\\d{4}:\\d{2}:\\d{2}:\\d{2}(?:\\d+)? [+-]\\d{4})\\] (?<body>.*)$"
+				"pattern" : "^\\[(?<timestamp>\\d{2}/\\w{3}/\\d{4}:\\d{2}:\\d{2}:\\d{2}(?:\\d+)? [+-]\\d{4})\\] (?<body>\\w.*)$"
+			},
+			"error"	: {
+				"pattern" : "^\\[(?<timestamp>\\d{2}/\\w{3}/\\d{4}:\\d{2}:\\d{2}:\\d{2}(?:\\d+)? [+-]\\d{4})\\] - (?<body>.*)$"
 			}
 		},
 		"value" : {
 			"conn"		: { "kind" : "string", "identifier" : true },
+			"fd"		: { "kind" : "string", "identifier" : true },
 			"op"		: { "kind" : "string", "identifier" : true },
+			"slot"		: { "kind" : "string", "identifier" : true },
+			"source"	: { "kind" : "string", "identifier" : true },
+			"dest"		: { "kind" : "string", "identifier" : true },
 			"opname"	: { "kind" : "string", "identifier" : true },
 			"body"		: { "kind" : "string" }
 		},
@@ -34,6 +44,9 @@
 			},
 			{
 				"line" 	: "[13/Jun/2015:15:04:21 +1000] slapd_ldap_sasl_interactive_bind - Error: could not perform interactive bind for id [] mech [GSSAPI]: LDAP error -2 (Local error) (SASL(-1): generic failure: GSSAPI Error: Unspecified GSS failure.  Minor code may provide more information (Ticket expired)) errno 2 (No such file or directory)"
+			},
+			{
+				"line"	: "[22/Apr/2016:07:44:24 -0400] - spsusers202: Indexed 49512000 entries (15%)."
 			}
 		]
 	}
