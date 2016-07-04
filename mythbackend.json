@@ -9,11 +9,11 @@
 			}
 		},
 		"level" : {
-            "config"    : "C",
+            "critical"  : "C",
 			"debug"		: "D",
 			"error"		: "E",
-            "information" : "I",
-            "notice"    : "N",            
+            "info"		: "I",
+            "trace"     : "N",            
 			"warning"	: "W"
 		},
 		"value" : {
