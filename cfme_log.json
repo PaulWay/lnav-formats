@@ -5,7 +5,7 @@
 		"url"			: "https://access.redhat.com/products/cloudforms",
 		"regex" : {
 			"main"		: {
-				"pattern" : "^\\[(?<field1>[^]]{4})\\] (?<level>\\w), \\[(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{6}) #(?<pid>\\d+):(?<client_id>[0-9a-f]{6})\\]  (?<level2>\\w+) (?<field2>..) : (?:Q-task_id\\(\\[(?<q_task_id>\\w+)\\]\\) )?MIQ\\((?<m_task_id>[\\w:.]+)(?:#(?<m_action>\\w+))?\\) (?:Message id: \\[(?<message_id>\\d+)\\], )?(?<body>.*?)$"
+				"pattern" : "^\\[(?<field1>[^]]{4})\\] (?<level>\\w), \\[(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{6}) #(?<pid>\\d+):(?<client_id>[0-9a-f]{6,7})\\]  (?<level2>\\w+) (?<field2>..) : (?:Q-task_id\\(\\[(?<q_task_id>\\w+)\\]\\) )?MIQ\\((?<m_task_id>[\\w:.]+)(?:#(?<m_action>\\w+))?\\) (?:Message id: \\[(?<message_id>\\d+)\\], )?(?<body>.*?)$"
 			}
 		},
 		"value" : {
@@ -20,7 +20,7 @@
 				"line"	: "[----] I, [2016-06-27T03:18:03.328328 #2984:92598c]  INFO -- : MIQ(MiqScheduleWorker::Runner#do_work) Number of scheduled items to be processed: 1."
 			},
 			{
-				"line"	: "[----] I, [2016-06-27T03:18:05.684399 #2975:5f198c]  INFO -- : MIQ(MiqPriorityWorker::Runner#get_message_via_drb) Message id: [65000000591683], MiqWorker id: [65000000000962], Zone: [default], Role: [smartstate], Server: [], Ident: [generic], Target id: [], Instance id: [], Task id: [job_dispatcher], Command: [JobProxyDispatcher.dispatch], Timeout: [600], Priority: [20], State: [dequeue], Deliver On: [], Data: [], Args: [], Dequeued in: [2.352265152] seconds"
+				"line"	: "[----] I, [2016-06-27T03:18:21.340907 #31875:1269994]  INFO -- : MIQ(MiqGenericWorker::Runner#get_message_via_drb) Message id: [65000000591684], MiqWorker id: [65000000001323], Zone: [default], Role: [], Server: [bfa85d88-1b04-11e6-aed8-525400a4f30f], Ident: [generic], Target id: [], Instance id: [], Task id: [], Command: [Session.check_session_timeout], Timeout: [600], Priority: [90], State: [dequeue], Deliver On: [], Data: [], Args: [], Dequeued in: [2.975224968] seconds"
 			},
 			{
 				"line"	: "[----] I, [2016-06-27T03:18:05.684555 #2975:5f198c]  INFO -- : Q-task_id([job_dispatcher]) MIQ(MiqQueue#deliver) Message id: [65000000591683], Delivering..."
