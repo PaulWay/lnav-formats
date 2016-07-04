@@ -9,7 +9,7 @@
 			}
 		},
 		"value" : {
-			"pid"		: { "kind" : "integer", "identifier" : true },
+			"pid"		: { "kind" : "string", "identifier" : true },
 			"client_id" : { "kind" : "string", "identifier" : true },
 			"q_task_id" : { "kind" : "string", "identifier" : true },
 			"m_task_id" : { "kind" : "string", "identifier" : true },
