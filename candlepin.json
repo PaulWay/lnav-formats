@@ -3,11 +3,8 @@
 		"title"			: "Candlepin log format",
 		"description"	: "Log format used by Candlepin registration system",
 		"regex" : {
-			"reqorg"	: {
-				"pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2},\\d{3}) \\[(req=(?<req>[0-9a-f-]+)|=), org=(?<org>\\w*)\\] (?<alert_level>\\w+)  (?<module>[\\w.]+) - (?<body>.*)$"
-			},
-			"other"	: {
-				"pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}[+-]\\d{4}) (?<body>.*)$"
+			"main"	: {
+				"pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}(?:,\\d{3})?(?:[+-]\\d{4})?) (?:\\[(req=(?<req>[0-9a-f-]+)|=), org=(?<org>\\w*)\\] (?<alert_level>\\w+)  (?<module>[\\w.]+) - )?(?<body>.*?)$"
 			}
 		},
 		"value" : {

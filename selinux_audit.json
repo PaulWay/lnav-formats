@@ -3,11 +3,8 @@
 		"title"			: "SELinux audit log format",
 		"description"	: "Log format for SELinux audit messages",
 		"regex" : {
-			"denial"	: {
-				"pattern" : "^type=(?<type>AVC) msg=audit\\((?<timestamp>\\d+\\.\\d+):(?<event_no>\\d+)\\): avc:\\s+denied\\s+\\{ (?<action>\\w+(?:\\s\\w+)*) \\} for  pid=(?<pid>\\d+) comm=\"(?<comm>\\w+)\" name=\"(?<name>.*?)\" dev=(?<device>\\d+:\\d+) ino=(?<inode>\\d+) scontext=(?<src_user>\\w+):(?<src_role>\\w+):(?<src_type>\\w+):(?<src_mlc>\\S+) tcontext=(?<tgt_user>\\w+):(?<tgt_role>\\w+):(?<tgt_type>\\w+):(?<tgt_mlc>\\S+) tclass=(?<tgt_class>\\w+)$"
-			},
-			"usual"	: {
-				"pattern" : "^type=(?<type>\\w+) msg=audit\\((?<timestamp>\\d+\\.\\d+):(?<event_no>\\d+)\\): (?<body>\\S.*)$"
+			"main"	: {
+				"pattern" : "^type=(?<type>\\w+) msg=audit\\((?<timestamp>\\d+\\.\\d+):(?<event_no>\\d+)\\): (?:avc:\\s+denied\\s+\\{ (?<action>\\w+(?:\\s\\w+)*) \\} for  pid=(?<pid>\\d+) comm=\"(?<comm>\\w+)\" name=\"(?<name>.*?)\" dev=(?<device>\\d+:\\d+) ino=(?<inode>\\d+) scontext=(?<src_user>\\w+):(?<src_role>\\w+):(?<src_type>\\w+):(?<src_mlc>\\S+) tcontext=(?<tgt_user>\\w+):(?<tgt_role>\\w+):(?<tgt_type>\\w+):(?<tgt_mlc>\\S+) tclass=(?<tgt_class>\\w+)|(?<body>.*))$"
 			}
 		},
 		"timestamp-format" : [ "%s" ],

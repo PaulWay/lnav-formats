@@ -4,17 +4,8 @@
 		"description"	: "Log format used by strace",
 		"url"			: "http://en.wikipedia.org/wiki/Strace",
 		"regex" : {
-			"signal"	: {
-				"pattern" : "^(?:(?<process_id>\\d+)\\s+)?(?<timestamp>\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{6})?) --- (?<signal>SIG\\w+) \\((?<signame>\\w+)\\) @ \\d+ \\(\\d+\\) ---$"
-			},
-			"incomplete": {
-				"pattern" : "^(?:(?<process_id>\\d+)\\s+)?(?<timestamp>\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{6})?) (?<syscall>\\w+)\\((?<body>.*)$"
-			},
-			"resumed"	: {
-				"pattern" : "^(?:(?<process_id>\\d+)\\s+)?(?<timestamp>\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{6})?) <... (?<syscall>\\w+) resumed> (?<body>.*)\\)\\s+=\\s+(?<rc>[-\\w]+)(?: (?<errno>\\w+) \\([^\\)]+\\))?(?: <(?<duration>\\d+\\.\\d+)>)?$"
-			},
-			"std"	: {
-				"pattern" : "^(?:(?<process_id>\\d+)\\s+)?(?<timestamp>\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{6})?) (?<syscall>\\w+)\\((?<body>.*)\\)\\s+=\\s+(?<rc>[-\\w]+)(?: (?<errno>\\w+) \\([^\\)]+\\))?(?: <(?<duration>\\d+\\.\\d+)>)?$"
+			"new"	: {
+				"pattern" : "(?:(?<process_id>\\d+)\\s+)(?<timestamp>\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?) (?:--- (?<signal>SIG\\w+) \\((?<signame>\\w+)\\) @ \\d+ \\(\\d+\\) ---|(?<syscall>\\w+)\\((?<args>\\S.*?)\\)?|(?<syscall_unfinished>\\w+)\\( <unfinished \\.\\.\\.>|<\\.\\.\\. (?<syscall_resumed>\\w+) resumed> (?<resume_args>\\{.*\\})?.*)(?: = (?<result>\\d+) \\((?<errname>\\w+)\\) <(?<duration>\\d+\\.\\d+)>)?$"
 			}
 		},
 		"value" : {

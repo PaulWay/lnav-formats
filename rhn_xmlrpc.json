@@ -5,13 +5,7 @@
 		"url"			: "https://access.redhat.com/products/red-hat-satellite",
 		"regex" : {
 			"main"		: {
-				"pattern" : "^(?<timestamp>\\d{4}/\\d{2}/\\d{2} \\d{2}:\\d{2}:\\d{2} [+-]?\\d{2}:\\d{2}) (?<pid>\\d+) (?<client_ip>\\S+): (?<module>\\w+)/(?<function>[\\w.-]+)\\((?<client_id>\\d+),\\s?(?<args>.*)?\\)$"
-			},
-			"no_client_id"	: {
-				"pattern" : "^(?<timestamp>\\d{4}/\\d{2}/\\d{2} \\d{2}:\\d{2}:\\d{2} [+-]?\\d{2}:\\d{2}) (?<pid>\\d+) (?<client_ip>\\S+): (?<module>\\w+)/(?<function>[\\w.-]+)\\((?<args>\\D.*)\\)$"
-			},
-			"register_osad"	: {
-				"pattern" : "^(?<timestamp>\\d{4}/\\d{2}/\\d{2} \\d{2}:\\d{2}:\\d{2} [+-]?\\d{2}:\\d{2}) (?<pid>\\d+) (?<client_ip>\\S+): (?<module>\\w+)/(?<function>registration\\.register_osad)$"
+				"pattern" : "^(?<timestamp>\\d{4}/\\d{2}/\\d{2} \\d{2}:\\d{2}:\\d{2} [+-]?\\d{2}:\\d{2}) (?<pid>\\d+) (?<client_ip>\\S+): (?<module>\\w+)/(?<function>[\\w.-]+)(?:\\((?:(?<client_id>\\d+), )?(?<args>.*?)\\))?$"
 			}
 		},
 		"value" : {

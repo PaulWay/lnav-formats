@@ -5,10 +5,7 @@
 		"url"			: "http://fedorahosted.org/sssd",
 		"regex" : {
 			"core"		: {
-				"pattern" : "^\\((?<timestamp>\\w{3} \\w{3} ( \\d|\\d{2}) \\d{2}:\\d{2}:\\d{2} \\d{4})\\) \\[sssd\\] \\[(?<function>\\w+)\\] \\((?<debug_level>0x[0-9a-fA-F]{4}|\\d)\\): (?<body>.*)$"
-			},
-			"module"	: {
-				"pattern" : "^\\((?<timestamp>\\w{3} \\w{3} ( \\d|\\d{2}) \\d{2}:\\d{2}:\\d{2} \\d{4})\\) \\[\\[?sssd(?<module>\\[.*?\\])\\]?\\] \\[(?<function>\\w+)\\] \\((?<debug_level>0x[0-9a-fA-F]{4}|\\d)\\): (?<body>.*)$"
+				"pattern" : "^\\((?<timestamp>\\w{3} \\w{3} ( \\d|\\d{2}) \\d{2}:\\d{2}:\\d{2} \\d{4})\\) \\[\\[?(?:sssd|sssd(?<module>\\[.*?\\]))\\]?\\] \\[(?<function>\\w+)\\] \\((?<debug_level>0x[0-9a-fA-F]{4}|\\d)\\): (?<body>.*)$"
 			}
 		},
 		"value" : {

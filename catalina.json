@@ -4,14 +4,8 @@
 		"description"	: "Log format used by catalina",
 		"url"			: "http://catalina",
 		"regex" : {
-			"regular_line"	: {
-				"pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}(?:\\,\\d+)?) \\[(?<process>[\\w-]+)\\] (?<alert_level>\\w+)\\s+(?<class>[\\w._]+) - (?<body>.*)$"
-			},
-			"dump_line"		: {
-				"pattern" : "JVMDUMP(?<dump_id>\\d+\\w+) Processing dump event \"(?<event>\\w+)\", detail \"(?<exception>[\\w./]+)\" at (?<timestamp>\\d{4}/\\d{2}/\\d{2} \\d{2}:\\d{2}:\\d{2}(?:\\,\\d+)?) - please wait.$"
-			},
-			"pause_line"	: {
-				"pattern" : "^(?<timestamp>\\w{3} [\\d ]\\d, \\d{4} \\d{1,2}:\\d{2}:\\d{2} (AM|PM)) (?<class>[\\w._]+) pause$"
+			"main"	: {
+				"pattern" : "^(?:JVMDUMP(?<dump_id>\\d+\\w+) Processing dump event \"(?<event>\\w+)\", detail \"(?<exception>[\\w./]+)\" at )?(?<timestamp>\\d{4}[/-]\\d{2}[/-]\\d{2} \\d{2}:\\d{2}:\\d{2}(?:\\,\\d+)?|\\w{3} [\\d ]\\d, \\d{4} \\d{1,2}:\\d{2}:\\d{2} (AM|PM)) (?:\\[(?<process>[\\w-]+)\\] (?<alert_level>\\w+)\\s+)?(?<class>[\\w._]+)?(?:- )?(?<body>.*)$"
 			}
 		},
 		"value" : {

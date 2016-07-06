@@ -3,11 +3,8 @@
 		"title"			: "CUPS log format",
 		"description"	: "Log format used by the Common Unix Printing System",
 		"regex" : {
-			"section"	: {
-				"pattern" : "^(?<level>[IEW]) \\[(?<timestamp>\\d{2}/\\w{3}/\\d{4}:\\d{2}:\\d{2}:\\d{2} [+-]\\d{4})\\] (?<section>\\w+): (?<body>.*)$"
-			},
 			"default"	: {
-				"pattern" : "^(?<level>[IEW]) \\[(?<timestamp>\\d{2}/\\w{3}/\\d{4}:\\d{2}:\\d{2}:\\d{2} [+-]\\d{4})\\] (?<body>.*)$"
+				"pattern" : "^(?<level>[IEW]) \\[(?<timestamp>\\d{2}/\\w{3}/\\d{4}:\\d{2}:\\d{2}:\\d{2} [+-]\\d{4})\\] (?:(?<section>\\w+): )?(?<body>.*?)$"
 			}
 		},
 		"level" : {

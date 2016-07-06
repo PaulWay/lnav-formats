@@ -4,14 +4,8 @@
 		"description"	: "Log format used by Exim, the internet mailer",
 		"url"			: "http://exim.org",
 		"regex" : {
-			"smtp_line"	: {
-				"pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)? (?:[+-]\\d{4})) SMTP connection from (?<host>\\w[\\w_.-]+\\w) \\[(?<host_ip>(?:\\d[\\d.]+\\d|[0-9a-f:]+[0-9a-f]))\\] I=\\[(?<rcv_ip>(?:\\d[\\d.]+\\d|[0-9a-f:]+[0-9a-f]))\\]:(?<port>\\d{1,5}) (?<body>.*)$"
-			},
-			"send_line" : {
-				"pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)? (?:[+-]\\d{4})) (?<msg_id>[A-Za-z0-9-]+) (?:Completed|(?<dir><=|=>|->|>>|\\*>|\\*\\*|==) (?<body>.*))$"
-			},
-			"recv_line" : {
-				"pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)? (?:[+-]\\d{4})) H=(?:(?<host>\\w[\\w_.-]+\\w)|(?<inval_host>\\(\\d[\\d.:]+\\d\\))) \\[(?<host_ip>(?:\\d[\\d.]+\\d|[0-9a-f:]+[0-9a-f]))\\] I=\\[(?<rcv_ip>(?:\\d[\\d.]+\\d|[0-9a-f:]+[0-9a-f]))\\]:(?<port>\\d{1,5}) (?<body>.*)$"
+			"main"	: {
+				"pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)? (?:[+-]\\d{4})) (?:SMTP connection from (?<host>\\w[\\w_.-]+\\w) \\[(?<host_ip>(?:\\d[\\d.]+\\d|[0-9a-f:]+[0-9a-f]))\\] I=\\[(?<rcv_ip>(?:\\d[\\d.]+\\d|[0-9a-f:]+[0-9a-f]))\\]:(?<port>\\d{1,5})|(?<msg_id>[A-Za-z0-9-]+) (?:Completed|(?<dir><=|=>|->|>>|\\*>|\\*\\*|==))|H=(?:(?<inval_host>\\w[\\w_.-]+\\w|\\(\\d[\\d.:]+\\d\\))) \\[(?<inval_host_ip>(?:\\d[\\d.]+\\d|[0-9a-f:]+[0-9a-f]))\\] I=\\[(?<inval_rcv_ip>(?:\\d[\\d.]+\\d|[0-9a-f:]+[0-9a-f]))\\]:(?<inval_port>\\d{1,5})) ?(?<body>.*)$"
 			}
 		},
 		"value" : {
