@@ -5,12 +5,21 @@
 		"url"			: "http://en.wikipedia.org/wiki/Strace",
 		"regex" : {
 			"new"	: {
-				"pattern" : "(?:(?<process_id>\\d+)\\s+)(?<timestamp>\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?) (?:--- (?<signal>SIG\\w+) \\((?<signame>\\w+)\\) @ \\d+ \\(\\d+\\) ---|(?<syscall>\\w+)\\((?<args>\\S.*?)\\)?|(?<syscall_unfinished>\\w+)\\( <unfinished \\.\\.\\.>|<\\.\\.\\. (?<syscall_resumed>\\w+) resumed> (?<resume_args>\\{.*\\})?.*)(?: = (?<result>\\d+) \\((?<errname>\\w+)\\) <(?<duration>\\d+\\.\\d+)>)?$"
+				"pattern" : "(?:(?<process_id>\\d+)\\s+)(?<timestamp>\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?) (?:(?<syscall>\\w+)\\((?<args>(?:[^)]*{[^}]+})*[^)]*)\\)?|(?<syscall_unfinished>\\w+)\\( <unfinished \\.\\.\\.>|<\\.\\.\\. (?<syscall_resumed>\\w+) resumed> (?<resume_args>.*)?|--- (?<signal>SIG\\w+) \\((?<signame>\\w+)\\) @ \\d+ \\(\\d+\\) ---$)(?:\\s+= (?<result>-?\\d+|0x[0-9a-f]+))?(?: (?<errname>\\w+))?(?: \\((?<errdesc>[^)]+)\\)?)?(?: <(?<duration>\\d+\\.\\d+)>)?$"
 			}
 		},
 		"value" : {
+			"process_id": { "kind" : "string", "identifier" : true },
+			"syscall"	: { "kind" : "string", "identifier" : true },
+			"syscall_unfinished"	: { "kind" : "string", "identifier" : true },
+			"syscall_resumed"	: { "kind" : "string", "identifier" : true },
+			"result"	: { "kind" : "string", "identifier" : true },
+			"errname"	: { "kind" : "string", "identifier" : true },
+			"errdesc"	: { "kind" : "string", "identifier" : true },
 			"signal"	: { "kind" : "string", "identifier" : true },
 			"signame"	: { "kind" : "string", "identifier" : true },
+			"duration"	: { "kind" : "float" },
+			"args"		: { "kind" : "string" },
 			"body"		: { "kind" : "string" }
 		},
 		"sample" : [
@@ -27,10 +36,23 @@
 				"line"	: "2132  10:36:21.988159 <... getsockname resumed> {sa_family=AF_NETLINK, pid=2132, groups=00000000}, [12]) = 0 <0.000019>"
 			},
 			{
-				"line"	: "2731  14:48:34.987869 select(9, [4 5 6 7 8], NULL, NULL, {0, 762910}) = 0 (Timeout) <0.763747>"
+				"line"	: "2132  14:48:34.987869 select(9, [4 5 6 7 8], NULL, NULL, {0, 762910}) = 0 (Timeout) <0.763747>"
 			},
 			{
 				"line" 	: "12231 15:42:50 poll([{fd=5, events=POLLIN|POLLERR}], 1, -1"
+			},
+			{
+				"line"	: "7658  07:58:11 recvfrom(7, 0x7fff32c2295f, 1, 0, 0, 0) = -1 EAGAIN (Resource temporarily unavailable)"
+			},
+			{
+				"line"	: "7658  07:58:11 <... nanosleep resumed> NULL) = 0"
+			},
+			{
+				"line"	: "7637  07:30:01 mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x2acf30791000"
+			},
+			{
+				"line"	: "101658 18:31:59 stat(\"/sybase/OCS-15_0/lib\", {st_dev=makedev(8, 10), st_ino=917887, st_mode=S_IFDIR|0755, st_nlink=2, st_uid=1000, st_gid=1000, st_blksize=4096, st_blocks=8, st_size=4096, st_atime=2016/06/30-16:14:37, st_mtime=2016/01/06-10:15:45, st_ctime=2016/03/15-11:06:56}) = 0 <0.000006>"
+
 			}
 		]
 	}
