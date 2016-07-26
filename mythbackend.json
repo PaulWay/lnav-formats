@@ -5,7 +5,7 @@
 		"url"			: "http://mythtv.org",
 		"regex" : {
 			"line"	: {
-				"pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?) (?<level>[CEINW]) \\[(?<num1>\\d+)/(?<num2>\\d+)\\] (?<context>\\w+) (?<filename>\\w+\\.cpp):(?<line>\\d+) \\((?<function>\\w+)\\) - (?<body>.*)$"
+				"pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?) (?<level>[CDEINW]) \\[(?<num1>\\d+)/(?<num2>\\d+)\\] (?<context>\\w+) (?<filename>\\w+\\.cpp):(?<line>\\d+) \\((?<function>\\w+)\\) - (?<body>.*)$"
 			}
 		},
 		"level" : {
