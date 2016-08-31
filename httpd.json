@@ -28,7 +28,7 @@
 		]
 	},
 	"error_log" : {
-		"title"			: "error log format for HTTPS",
+		"title"			: "error log format for HTTPD",
 		"description"	: "Log format used by Apache HTTPD for HTTPS connections",
 		"url"			: "http://httpd.apache.org",
 		"regex" : {
@@ -55,6 +55,30 @@
 			},
 			{
 				"line" 	: "[Tue Feb 02 16:42:29 2016] [warn] [client 10.20.30.100] incomplete redirection target of '/rhn/Login.do' for URI '/index.html' modified to 'http://example.com/'"
+			}
+		]
+	},
+	"httpd_ssl_request_log" : {
+		"title"			: "request log format for HTTPD",
+		"description" 	: " Log format used by Apache HTTPD for SSL requests",
+		"url"			: "http://httpd.apache.org",
+		"regex" : {
+			"default" : {
+				"pattern" : "^\\[(?<timestamp>\\d{2}/\\w{3}/\\d{4}:\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?: [+-]\\d{4}))?\\] (?<src_addr>[0-9a-f][0-9a-f.:]+[0-9a-f]) (?<transport>\\w+) (?<hash>[A-Za-z0-9_-]+) \"(?<method>\\w+) (?<uri>/\\S+) HTTP/(?<proto_vers>\\d\\.\\d)\" (?<size>\\d+)$"
+			}
+		},
+		"value" : {
+			"src_addr"		: { "kind" : "string", "identifier" : true },
+			"transpoort"	: { "kind" : "string", "identifier" : true },
+			"hash"			: { "kind" : "string", "identifier" : true },
+			"method"		: { "kind" : "string", "identifier" : true },
+			"uri"			: { "kind" : "string", "identifier" : true },
+			"version"		: { "kind" : "float"},
+			"size"			: { "kind" : "integer"}
+		},
+		"sample" : [
+			{
+				"line"	: "[17/Jul/2016:04:06:30 -0400] 199.52.200.205 TLSv1 AES256-SHA \"POST /XMLRPC HTTP/1.1\" 163"
 			}
 		]
 	}
