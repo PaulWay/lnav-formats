@@ -1,0 +1,27 @@
+{
+	"rhsm_log" : {
+		"title"			: "rhsm log format",
+		"description"	: "Log format used by Red Hat Subscription Manager",
+		"url"			: "http://rhsm",
+		"regex" : {
+			"main"	: {
+				"pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}(?:,\\d+)?) \\[(?<level>\\w+)\\] (?<process>\\w+):(?<pid>\\d+) @(?<file>\\w+\\.py):(?<line>\\d+) - (?<body>.*)$"
+			}
+		},
+		"value" : {
+			"process"	: { "kind" : "string", "identifier" : true },
+			"pid"	: { "kind" : "integer", "identifier" : true },
+			"file"	: { "kind" : "string", "identifier" : true },
+			"line"	: { "kind" : "integer", "identifier" : true },
+			"body"	: { "kind" : "string" }
+		},
+		"sample" : [
+			{
+				"line" 	: "2016-08-26 10:38:06,058 [DEBUG] yum:31581 @identity.py:131 - Loading consumer info from identity certificates."
+			},
+			{
+				"line" 	: "2016-08-26 10:38:06,064 [INFO] yum:31581 @connection.py:778 - Connection built: http_proxy=cla-app-proxy.au.money.ge.com:3128 host=subscription.rhn.redhat.com port=443 handler=/subscription auth=identity_cert ca_dir=/etc/rhsm/ca/ verify=False"
+			}
+		]
+	}
+}
