@@ -1,0 +1,31 @@
+{
+    "winccoa" : {
+        "title" : "WinCC OA 3.11 Log Format",
+        "description"   : "Log format used by WinCC OA SCADA",
+        "url"           : "http://www.etm.at/index_e.asp?id=2&m0id=6",
+        "regex" : {
+                "basic" : {
+                    "pattern" : "^(?<manager>WCC.*?)\\s*\\((?<man_num>\\d+\\)), (?<timestamp>\\d{4}.\\d{2}.\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d{3}),\\s*(?<mod>\\w+),\\s*(?<level>\\w+),\\s*(?<body>.*?)$"
+                }
+        },
+        "timestamp-format" : ["%Y.%m.%d %H:%M:%S.%L"],
+        "value" : {
+            "body"      : { "kind" : "string" },
+            "manager"   : { "kind" : "string", "identifier" : true },
+            "man_num"   : {"kind" : "string"},
+            "mod"       : { "kind" : "string", "identifier" : true },
+            "level"     : { "kind" : "string", "identifier" : true }
+        },
+        "level-field" : "level",
+        "level" : {
+            "error" : "SEVERE",
+            "warning" : "WARNING"
+        },
+
+        "sample" : [
+            {
+                "line" : "WCCILevent   (0), 2015.12.15 17:30:07.464, SYS,  INFO,        3, Trying to connect to, (SYS: 0 Data -num 0 CONN: 1) @ pcen33971.cern.ch:8850"
+            }
+        ]
+    }
+}
