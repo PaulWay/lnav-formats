@@ -1,0 +1,24 @@
+{
+    "logrus" : {
+        "title" : "Logrus Log Format",
+        "description" : "Log format for logrus.",
+        "url" : "https://github.com/sirupsen/logrus",
+        "level-field" : "level",
+	"timestamp-field" : "time",
+        "json": true,
+	"body-field": "msg",
+	"line-format" : [
+		{ "field" : "time" },
+		" ",
+		{ "field" : "level" },
+		" ",
+		{ "field" : "msg" }
+	],
+	"level" : {
+		"info"	: "info",
+		"error" : "error",
+		"warning" : "warn",
+		"debug" : "debug"
+	}
+    }
+}
